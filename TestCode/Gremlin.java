@@ -35,9 +35,27 @@ public class Gremlin implements DungeonCharacter,Attack{
 	
 	@Override
 	public void subtractHitPoints(int hitPoints) {
-		this.hitPoints = this.hitPoints - hitPoints;
-		
+		if (hitPoints <0)
+			System.out.println("Hitpoint amount must be positive.");
+		else if (hitPoints >0)
+		{
+			this.hitPoints -= hitPoints;
+			if (this.hitPoints < 0)
+				this.hitPoints = 0;
+			System.out.println(getName() + " hit " +
+								" for <" + hitPoints + "> points damage.");
+			System.out.println(getName() + " now has " +
+								getHitPoints() + " hit points remaining.");
+			System.out.println();
+		}//end else if
+
+		if (this.hitPoints == 0)
+			System.out.println(this.getName() + " has been killed :-(");
+
 	}
+
+		
+	
 
 	@Override
 	public void addHitPoints(int hitPoints) {
