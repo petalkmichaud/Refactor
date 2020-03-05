@@ -69,7 +69,25 @@ public class Sorceress implements DungeonCharacter{
 			System.out.println(this.getName() + " BLOCKED the attack!");
 		}
 		else {
-			this.hitPoints = this.hitPoints - hitPoints;
+			{
+				if (hitPoints <0)
+					System.out.println("Hitpoint amount must be positive.");
+				else if (hitPoints >0)
+				{
+					this.hitPoints -= hitPoints;
+					if (this.hitPoints < 0)
+						this.hitPoints = 0;
+					System.out.println(getName() + " hit " +
+										" for <" + hitPoints + "> points damage.");
+					System.out.println(getName() + " now has " +
+										getHitPoints() + " hit points remaining.");
+					System.out.println();
+				}//end else if
+
+				if (this.hitPoints == 0)
+					System.out.println(this.getName() + " has been killed :-(");
+
+			}
 		}
 	}
 	@Override
@@ -78,6 +96,16 @@ public class Sorceress implements DungeonCharacter{
 		
 	}
 	
-	
+	public boolean isAlive() {
+		if(this.hitPoints <= 0) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public SpecialMove getSpecialMove() {
+		return this.heal;
+	}
 
 }

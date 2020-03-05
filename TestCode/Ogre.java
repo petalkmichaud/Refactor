@@ -63,6 +63,17 @@ public class Ogre implements DungeonCharacter{
 			System.out.println();
 		}
 	}
+	@Override
+	public boolean isAlive() {
+		if(this.hitPoints <= 0) {
+			return false;
+		}
+		return true;
+	}
+	@Override
+	public SpecialMove getSpecialMove() {
+		return this.heal;
+	}
 
 	
 
