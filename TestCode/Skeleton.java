@@ -1,11 +1,10 @@
 
-public class Ogre implements DungeonCharacter{
-	
-	private int hitPoints = 200;
-	private int attackSpeed = 2;
-	private double chanceToHit = 0.6;
-	private double chanceToHeal = 0.1;
-	private int minDamage = 25;
+public class Skeleton implements DungeonCharacter,Attack{
+	private int hitPoints = 100;
+	private int attackSpeed = 3;
+	private double chanceToHit = 0.8;
+	private double chanceToHeal = 0.3;
+	private int minDamage = 30;
 	private int maxDamage = 50;
 	private double blockChance = 0;
 	private final int MIN_ADD = 30;
@@ -55,7 +54,7 @@ public class Ogre implements DungeonCharacter{
 	}
 
 		
-
+	
 	@Override
 	public void addHitPoints(int hitPoints) {
 		this.hitPoints += hitPoints;
@@ -80,7 +79,7 @@ public class Ogre implements DungeonCharacter{
 			System.out.println();
 		}
 	}
-	@Override
+
 	public boolean isAlive() {
 		if(this.hitPoints <= 0) {
 			return false;
@@ -90,9 +89,9 @@ public class Ogre implements DungeonCharacter{
 	@Override
 	public SpecialMove getSpecialMove() {
 		return this.heal;
+		
 	}
 
-	
-
-
 }
+
+

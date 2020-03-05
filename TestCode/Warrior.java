@@ -1,14 +1,15 @@
 
-public class Sorceress implements DungeonCharacter{
+public class Warrior implements DungeonCharacter,Attack{
+
 	private final int MIN_ADD = 25;
 	private final int MAX_ADD = 50;
 	
-	private int hitPoints = 75;
-	private int attackSpeed = 5;
-	private double chanceToHit = 0.7;
-	private int minDamage = 25;
-	private int maxDamage = 50;
-	private double blockChance = 0.3;
+	private int hitPoints = 125;
+	private int attackSpeed = 4;
+	private double chanceToHit = 0.8;
+	private int minDamage = 35;
+	private int maxDamage = 60;
+	private double blockChance = 0.2;
 	private String cName;
 	
 	
@@ -27,7 +28,7 @@ public class Sorceress implements DungeonCharacter{
 		
 	}
 	
-	public Sorceress(String cName) {
+	public Warrior(String cName) {
 		this.cName = cName;
 	}
 	@Override
@@ -47,7 +48,7 @@ public class Sorceress implements DungeonCharacter{
 
 	@Override
 	public void attack(DungeonCharacter opponent) {
-			System.out.println(this.getName() + " casts a spell of fireball at " + opponent.getName() + ":");
+			System.out.println(this.getName() + " swings a mighty sword at" + opponent.getName() + ":");
 
 			if (Math.random() <= chanceToHit){
 				
@@ -69,33 +70,32 @@ public class Sorceress implements DungeonCharacter{
 			System.out.println(this.getName() + " BLOCKED the attack!");
 		}
 		else {
+			if (hitPoints <0)
+				System.out.println("Hitpoint amount must be positive.");
+			else if (hitPoints >0)
 			{
-				if (hitPoints <0)
-					System.out.println("Hitpoint amount must be positive.");
-				else if (hitPoints >0)
-				{
-					this.hitPoints -= hitPoints;
-					if (this.hitPoints < 0)
-						this.hitPoints = 0;
-					System.out.println(getName() + " hit " +
-										" for <" + hitPoints + "> points damage.");
-					System.out.println(getName() + " now has " +
-										getHitPoints() + " hit points remaining.");
-					System.out.println();
-				}//end else if
+				this.hitPoints -= hitPoints;
+				if (this.hitPoints < 0)
+					this.hitPoints = 0;
+				System.out.println(getName() + " hit " +
+									" for <" + hitPoints + "> points damage.");
+				System.out.println(getName() + " now has " +
+									getHitPoints() + " hit points remaining.");
+				System.out.println();
+			}//end else if
 
-				if (this.hitPoints == 0)
-					System.out.println(this.getName() + " has been killed :-(");
+			if (this.hitPoints == 0)
+				System.out.println(this.getName() + " has been killed :-(");
 
-			}
 		}
-	}
+
+		}
+	
 	@Override
 	public void addHitPoints(int hitPoints) {
 		this.hitPoints += hitPoints;
 		
 	}
-	
 	public boolean isAlive() {
 		if(this.hitPoints <= 0) {
 			return false;
@@ -107,5 +107,4 @@ public class Sorceress implements DungeonCharacter{
 	public SpecialMove getSpecialMove() {
 		return this.heal;
 	}
-
 }

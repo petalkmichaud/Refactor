@@ -1,15 +1,15 @@
 
-public class Ogre implements DungeonCharacter{
-	
-	private int hitPoints = 200;
-	private int attackSpeed = 2;
-	private double chanceToHit = 0.6;
-	private double chanceToHeal = 0.1;
-	private int minDamage = 25;
-	private int maxDamage = 50;
+public class Gremlin implements DungeonCharacter,Attack{
+
+	private int hitPoints = 70;
+	private int attackSpeed = 5;
+	private double chanceToHit = 0.8;
+	private double chanceToHeal = 0.4;
+	private int minDamage = 15;
+	private int maxDamage = 30;
 	private double blockChance = 0;
-	private final int MIN_ADD = 30;
-	private final int MAX_ADD = 50;
+	private final int MIN_ADD = 20;
+	private final int MAX_ADD = 40;
 	
 	
 	private SpecialMove heal = new Heal(this, MIN_ADD, MAX_ADD);
@@ -19,7 +19,7 @@ public class Ogre implements DungeonCharacter{
 	}
 	@Override
 	public String getName() {
-		return "Orge";
+		return "Gremlin";
 		
 	}
 
@@ -55,6 +55,7 @@ public class Ogre implements DungeonCharacter{
 	}
 
 		
+	
 
 	@Override
 	public void addHitPoints(int hitPoints) {
@@ -80,7 +81,6 @@ public class Ogre implements DungeonCharacter{
 			System.out.println();
 		}
 	}
-	@Override
 	public boolean isAlive() {
 		if(this.hitPoints <= 0) {
 			return false;
@@ -91,8 +91,6 @@ public class Ogre implements DungeonCharacter{
 	public SpecialMove getSpecialMove() {
 		return this.heal;
 	}
-
 	
-
 
 }

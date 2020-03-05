@@ -18,4 +18,9 @@ public class Heal implements SpecialMove {
 		System.out.println();
 		
 	}
+
+	@Override
+	public String getName() {
+		return "Heal";
+	}
 }
