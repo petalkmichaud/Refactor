@@ -8,6 +8,8 @@ public interface DungeonCharacter {
 		public void addHitPoints(int hitPoints);
 		
 		//characters can have a special move such as heal or some crazy attack
-		public void doSpecialMove();
+		public void doSpecialMove(DungeonCharacter opponent);
+		public boolean isAlive();
+		public SpecialMove getSpecialMove();
 
 }

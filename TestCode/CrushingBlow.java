@@ -4,7 +4,7 @@ public class CrushingBlow implements SpecialMove
 	DungeonCharacter character;
 	DungeonCharacter opponent;
 	
-	public CrushingBlow(DungeonCharacter thisCharacter)
+	public CrushingBlow(DungeonCharacter thisCharacter, DungeonCharacter opponent)
 	{
 		this.character = thisCharacter;
 		this.opponent = opponent;
@@ -25,6 +25,11 @@ public class CrushingBlow implements SpecialMove
 			System.out.println();
 		}//blow failed
 		
+	}
+	
+	public String getName()
+	{
+		return "Crushing Blow";
 	}
 	
 }
