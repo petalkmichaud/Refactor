@@ -2,7 +2,7 @@
 public class DungeonTester {
 	public static void main(String args[]) {
 		DungeonCharacterFactory factory = new DungeonCharacterFactory();
-		DungeonCharacter hero = factory.createSorceress("Angel");
+		DungeonCharacter hero = factory.createWarrior("Angel");
 		hero.doSpecialMove();
 		
 		DungeonCharacter monster = factory.createOrgre();
